@@ -4,7 +4,7 @@ import { cartState } from './recoil/cart';
 import './App.css';
 import Products from './components/Products';
 
-function App() {
+const App = () => {
 	const [cart, setCart] = useRecoilState(cartState);
 
 	return (
@@ -14,6 +14,6 @@ function App() {
 			</Suspense>
 		</div>
 	);
-}
+};
 
 export default App;

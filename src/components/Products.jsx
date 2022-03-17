@@ -1,10 +1,10 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { productsState } from '../recoil/products';
 import styles from './Products.module.css';
 
-function Products() {
-	const [products] = useRecoilState(productsState);
+const Products = () => {
+	const products = useRecoilValue(productsState);
 	return (
 		<div className={styles.grid}>
 			{products.map((product, i) => (
@@ -20,6 +20,6 @@ function Products() {
 			))}
 		</div>
 	);
-}
+};
 
 export default Products;
