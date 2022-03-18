@@ -1,2 +1,2 @@
-import { default as ProductGrid } from './ProductGrid';
+import ProductGrid from './ProductGrid';
 export default ProductGrid;

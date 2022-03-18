@@ -1,15 +1,22 @@
 import { Suspense } from 'react';
-import './App.css';
+import Layout from './components/Layout';
 import ProductGrid from './components/ProductGrid';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home, ProductsOverview, ProductDetails, Cart } from './pages';
 
 const App = () => {
 	return (
-		<div className="App">
-			<h1 className="logo">rss</h1>
-			<Suspense fallback={<div>Loading...</div>}>
-				<ProductGrid />
-			</Suspense>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route index element={<Home />} />
+				<Route path="/products" element={<ProductsOverview />} />
+				<Route
+					path="/products/:productId"
+					element={<ProductDetails />}
+				/>
+				<Route path="/cart" element={<Cart />} />
+			</Routes>
+		</BrowserRouter>
 	);
 };
 

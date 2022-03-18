@@ -1,0 +1,15 @@
+.page-wrapper {
+	min-height: 100vh;
+	padding: 0 2rem;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	place-items: center;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
