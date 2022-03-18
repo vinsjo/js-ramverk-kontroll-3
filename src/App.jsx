@@ -1,16 +1,13 @@
 import { Suspense } from 'react';
-import { useRecoilState } from 'recoil';
-import { cartState } from './recoil/cart';
 import './App.css';
-import Products from './components/Products';
+import ProductGrid from './components/ProductGrid';
 
 const App = () => {
-	const [cart, setCart] = useRecoilState(cartState);
-
 	return (
 		<div className="App">
+			<h1 className="logo">rss</h1>
 			<Suspense fallback={<div>Loading...</div>}>
-				<Products />
+				<ProductGrid />
 			</Suspense>
 		</div>
 	);
