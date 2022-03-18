@@ -7,10 +7,14 @@ import { cartState } from '../recoil/cart';
 
 const Product = ({ product }) => {
 	const [cart, setCart] = useRecoilState(cartState);
+
+	const getInCart = () => {
+		return !!cart.find(item => item.product.id === product.id);
+	};
+
 	const handleAddClick = () => {
-		const i = cart.findIndex(item => item.product.id === product.id);
 		setCart(
-			i < 0
+			!getInCart()
 				? [...cart, createCartItem(product)]
 				: cart.map(item =>
 						item.product.id !== product.id
@@ -19,6 +23,8 @@ const Product = ({ product }) => {
 				  )
 		);
 	};
+
+	console.log('product rendered');
 
 	return (
 		<div className="product-container">
