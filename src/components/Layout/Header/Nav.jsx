@@ -7,10 +7,22 @@ const Nav = () => {
 		<nav>
 			<ul className="nav-links">
 				<li>
-					<NavLink to="/products">Products</NavLink>
+					<NavLink
+						to="/products"
+						title="Product Overview"
+						className="nav-link"
+					>
+						Products
+					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/cart">Cart</NavLink>
+					<NavLink
+						to="/cart"
+						title="Shopping Cart"
+						className="nav-link"
+					>
+						Cart
+					</NavLink>
 				</li>
 			</ul>
 		</nav>

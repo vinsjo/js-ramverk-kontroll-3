@@ -1,15 +1,12 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { productsState } from '/src/recoil/products';
-import ProductCard from './ProductCard';
+import ProductGridItem from './ProductGridItem';
 import './ProductGrid.css';
 
-const ProductGrid = () => {
-	const products = useRecoilValue(productsState);
+const ProductGrid = ({ products }) => {
 	return (
 		<div className="product-grid">
 			{products.map(product => (
-				<ProductCard key={product.id} product={product} />
+				<ProductGridItem key={product.id} product={product} />
 			))}
 		</div>
 	);

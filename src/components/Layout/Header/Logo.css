@@ -6,3 +6,8 @@
 	text-transform: capitalize;
 	line-height: 100%;
 }
+
+.logo a {
+	text-decoration: none;
+	color: inherit;
+}

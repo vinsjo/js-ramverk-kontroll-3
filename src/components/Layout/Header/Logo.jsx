@@ -5,7 +5,9 @@ import './Logo.css';
 const Logo = () => {
 	return (
 		<h1 className="logo">
-			<Link to="/">rss</Link>
+			<Link to="/" title="Home">
+				rss
+			</Link>
 		</h1>
 	);
 };
