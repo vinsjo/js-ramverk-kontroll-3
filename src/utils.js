@@ -11,5 +11,11 @@ const formatPrice = value => {
 const createCartItem = product => {
 	return { product: product, count: 1 };
 };
+/**
+ * @param  {...String} names
+ */
+const classNames = (...names) => {
+	return names.filter(name => !!name).join(' ');
+};
 
-export { formatPrice, createCartItem };
+export { formatPrice, createCartItem, classNames };
