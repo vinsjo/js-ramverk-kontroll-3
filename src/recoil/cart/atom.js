@@ -27,7 +27,10 @@ export default atom({
 		({ setSelf, onSet }) => {
 			const items = getStoredItems();
 			items && setSelf(items);
-			onSet(items => setStoredItems(items));
+			onSet(items => {
+				console.log(items);
+				setStoredItems(items);
+			});
 		},
 	],
 });

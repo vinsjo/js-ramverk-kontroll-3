@@ -7,12 +7,14 @@
 	gap: 1rem;
 }
 
+.product-container .img-container {
+	max-height: 60vh;
+	max-width: 60vw;
+}
+
 .img-container {
 	aspect-ratio: 1;
 	padding: 1rem;
-	align-self: start;
-	max-height: 60vh;
-	max-width: 60vw;
 }
 
 .img-container img {
