@@ -1,4 +1,4 @@
-import { isFloat } from 'x-is-type';
+import { isFloat, isInt, isNum } from 'x-is-type';
 
 /**
  * @param {Number} value
@@ -8,9 +8,6 @@ const formatPrice = value => {
 	return `${isFloat(value) ? value.toFixed(2) : value}`;
 };
 
-const createCartItem = product => {
-	return { product: product, count: 1 };
-};
 /**
  * @param  {...String} names
  */
@@ -18,4 +15,4 @@ const classNames = (...names) => {
 	return names.filter(name => !!name).join(' ');
 };
 
-export { formatPrice, createCartItem, classNames };
+export { formatPrice, classNames };

@@ -1,30 +1,11 @@
 import React from 'react';
-import { createCartItem, formatPrice } from '../utils';
+import { formatPrice } from '../utils';
 import Button from './Button';
 import './Product.css';
-import { useRecoilState } from 'recoil';
-import { cartState } from '../recoil/cart';
+import { useCart } from '../recoil/cart';
 
 const Product = ({ product }) => {
-	const [cart, setCart] = useRecoilState(cartState);
-
-	const getInCart = () => {
-		return !!cart.find(item => item.product.id === product.id);
-	};
-
-	const handleAddClick = () => {
-		setCart(
-			!getInCart()
-				? [...cart, createCartItem(product)]
-				: cart.map(item =>
-						item.product.id !== product.id
-							? item
-							: { ...item, count: item.count + 1 }
-				  )
-		);
-	};
-
-	console.log('product rendered');
+	const cart = useCart();
 
 	return (
 		<div className="product-container">
@@ -34,7 +15,7 @@ const Product = ({ product }) => {
 			</div>
 			<p className="description">{product.description}</p>
 			<h4 className="price">${formatPrice(product.price)}</h4>
-			<Button className="add-btn" onClick={handleAddClick}>
+			<Button className="add-btn" onClick={() => cart.add(product)}>
 				Add To Cart
 			</Button>
 		</div>

@@ -12,7 +12,7 @@ const ProductDetails = () => {
 
 	return (
 		<Layout>
-			{!product ? 'Product not found :(' : <Product product={product} />}
+			<Product product={product} />
 		</Layout>
 	);
 };
