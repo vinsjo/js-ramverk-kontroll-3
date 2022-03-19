@@ -20,6 +20,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+}
+
+.btn.icon svg {
+	fill: rgb(45, 45, 45);
 }
 
 .btn:not(:disabled) {
@@ -27,7 +32,7 @@
 }
 
 @media (hover: hover) {
-	.btn.default:not(:disabled):hover {
+	.btn:not(:disabled):hover {
 		opacity: 0.8;
 	}
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
 import { useCart } from '../recoil/cart';
 import { formatPrice } from '../utils';
 import Button from './Button';
@@ -13,21 +14,27 @@ const CartSummary = () => {
 					? 'Cart is empty'
 					: cart.items.map(({ product, count }) => (
 							<li key={product.id} className="cart-item">
-								<div className="details">
-									<span>{product.title}</span>
+								<h3 className="title">{product.title}</h3>
+								<div className="item-bottom">
 									<span>
-										{count} * ${formatPrice(product.price)}
+										{count} * ${product.price}
 									</span>
-								</div>
-								<div className="button-container">
-									<Button
-										onClick={() => cart.remove(product)}
-									>
-										-
-									</Button>
-									<Button onClick={() => cart.add(product)}>
-										+
-									</Button>
+									<div className="button-container">
+										<Button
+											className="cart-btn"
+											variant="icon"
+											onClick={() => cart.remove(product)}
+										>
+											<IoMdRemoveCircleOutline />
+										</Button>
+										<Button
+											className="cart-btn"
+											variant="icon"
+											onClick={() => cart.add(product)}
+										>
+											<IoMdAddCircleOutline />
+										</Button>
+									</div>
 								</div>
 							</li>
 					  ))}
