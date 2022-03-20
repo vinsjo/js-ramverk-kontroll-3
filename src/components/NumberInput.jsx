@@ -67,6 +67,7 @@ const NumberInput = ({
 					value={inputValue}
 					onChange={handleInputChange}
 					onBlur={handleInputBlur}
+					maxLength={6}
 				/>
 			</form>
 
