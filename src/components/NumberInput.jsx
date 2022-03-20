@@ -10,6 +10,7 @@ const NumberInput = ({
 	onChange,
 	min,
 	max,
+	maxLength = 6,
 	initialValue = 0,
 	integerValues = true,
 }) => {
@@ -67,7 +68,7 @@ const NumberInput = ({
 					value={inputValue}
 					onChange={handleInputChange}
 					onBlur={handleInputBlur}
-					maxLength={6}
+					maxLength={maxLength}
 				/>
 			</form>
 

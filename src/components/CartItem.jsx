@@ -29,6 +29,7 @@ const CartItem = ({ product, count, onCountChange, onDelete }) => {
 				initialValue={count}
 				min={0}
 				onChange={onCountChange}
+				maxLength={4}
 			/>
 		</li>
 	);
