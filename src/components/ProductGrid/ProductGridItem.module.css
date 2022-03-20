@@ -1,8 +1,3 @@
-.container {
-	background-color: white;
-	position: relative;
-}
-
 .container,
 .link,
 .section {
@@ -10,24 +5,29 @@
 	height: 100%;
 }
 
+.container,
 .link {
-	display: block;
-	text-decoration: none;
 	display: grid;
-	grid-template-rows: 1fr 5rem;
-	grid-template-columns: 1fr;
 	place-items: center;
-}
-.section.info {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	grid-template-columns: 1fr;
 }
 
-.btn {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	z-index: 5;
-	/* font-size: 1rem; */
+.container {
+	grid-template-rows: 1fr 3rem;
+}
+
+.link {
+	text-decoration: none;
+	grid-template-rows: 1fr 2.5rem;
+}
+.title {
+	width: 100%;
+}
+.section.img {
+	aspect-ratio: 1;
+}
+.section.bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }

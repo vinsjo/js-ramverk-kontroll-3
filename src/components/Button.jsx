@@ -7,9 +7,9 @@ const Button = ({
 	children,
 	onClick,
 	value,
-	disabled = false,
 	variant = 'default',
 	type = 'button',
+	disabled = false,
 }) => {
 	return (
 		<button

@@ -10,28 +10,41 @@ const CartSummary = () => {
 	return (
 		<div className={styles.container}>
 			<ul className={styles.items}>
-				{!cart.count
-					? 'Cart is empty'
-					: cart.items.map(({ product, count }) => (
-							<CartItem
-								key={product.id}
-								product={product}
-								count={count}
-								onCountChange={value =>
-									cart.setItemCount(product, value)
-								}
-								onDelete={() => cart.setItemCount(product, 0)}
-							/>
-					  ))}
+				{!cart.count ? (
+					<h4>Cart is empty</h4>
+				) : (
+					cart.items.map(({ product, count }) => (
+						<CartItem
+							key={product.id}
+							product={product}
+							count={count}
+							onCountChange={value =>
+								cart.setItemCount(product, value)
+							}
+							onDelete={() => cart.setItemCount(product, 0)}
+						/>
+					))
+				)}
 			</ul>
 			<div className={styles.total}>
-				<span>Total:</span> <span>${formatPrice(cart.totalPrice)}</span>
+				{!cart.count ? (
+					''
+				) : (
+					<>
+						<span>Total:</span>{' '}
+						<span>${formatPrice(cart.totalPrice)}</span>
+					</>
+				)}
 			</div>
 			<div className={styles.actions}>
-				<Button variant="filled" onClick={() => cart.empty()}>
+				<Button
+					variant="filled"
+					onClick={() => cart.empty()}
+					disabled={!cart.count}
+				>
 					Empty Cart
 				</Button>
-				<Button> Checkout</Button>
+				<Button disabled={!cart.count}> Checkout</Button>
 			</div>
 		</div>
 	);

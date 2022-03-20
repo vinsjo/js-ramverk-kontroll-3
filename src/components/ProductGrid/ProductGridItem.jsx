@@ -12,15 +12,14 @@ const ProductGridItem = ({ product, onAdd }) => {
 				<div className={classNames(styles.section, styles.img)}>
 					<ProductImage product={product} />
 				</div>
-
-				<div className={classNames(styles.section, styles.info)}>
-					<h5 className="title">{product.title}</h5>
-					<h5 className="price">${formatPrice(product.price)}</h5>
-				</div>
+				<h5 className={styles.title}>{product.title}</h5>
 			</Link>
-			<Button className={styles.btn} onClick={onAdd}>
-				Add To Cart
-			</Button>
+			<div className={classNames(styles.section, styles.bottom)}>
+				<p className={styles.price}>${formatPrice(product.price)}</p>
+				<Button className={styles.btn} onClick={onAdd}>
+					Add To Cart
+				</Button>
+			</div>
 		</div>
 	);
 };

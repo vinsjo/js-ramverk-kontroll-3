@@ -43,6 +43,19 @@
 	transition-property: fill;
 }
 
+.btn.default:disabled {
+	color: var(--color-lighter);
+	border-color: var(--color-lighter);
+}
+
+.btn.filled:disabled {
+	background-color: var(--color-lighter);
+}
+
+.btn.icon:disabled svg {
+	fill: var(--color-lighter);
+}
+
 .btn,
 .btn.icon svg {
 	transition-duration: var(--transition-duration);
