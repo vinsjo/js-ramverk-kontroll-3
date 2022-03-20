@@ -1,11 +1,9 @@
 import React from 'react';
 import { useCart } from '../recoil/cart';
-import { Link } from 'react-router-dom';
 import { formatPrice } from '../utils';
 import CartItem from './CartItem';
-import NumberInput from './NumberInput';
-import styles from './CartSummary.module.css';
 import Button from './Button';
+import styles from './CartSummary.module.css';
 
 const CartSummary = () => {
 	const cart = useCart();
@@ -30,7 +28,9 @@ const CartSummary = () => {
 				<span>Total:</span> <span>${formatPrice(cart.totalPrice)}</span>
 			</div>
 			<div className={styles.actions}>
-				<Button onClick={() => cart.empty()}>Empty Cart</Button>
+				<Button variant="filled" onClick={() => cart.empty()}>
+					Empty Cart
+				</Button>
 				<Button> Checkout</Button>
 			</div>
 		</div>

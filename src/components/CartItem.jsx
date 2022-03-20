@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoMdCloseCircleOutline } from 'react-icons/io';
+import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../utils';
 import Button from './Button';
@@ -10,7 +10,7 @@ const CartItem = ({ product, count, onCountChange, onDelete }) => {
 	return (
 		<li className={styles.item}>
 			<Button className={styles.delete} onClick={onDelete} variant="icon">
-				<IoMdCloseCircleOutline />
+				<IoMdClose />
 			</Button>
 			<div className={styles.info}>
 				<Link

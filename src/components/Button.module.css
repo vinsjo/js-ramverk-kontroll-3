@@ -8,6 +8,7 @@
 	border: none;
 	border-radius: 3px;
 	font-weight: 500;
+	padding: 0.5em 1em;
 }
 
 .btn:not(:disabled) {
@@ -15,9 +16,15 @@
 }
 
 .btn.default {
+	background-color: transparent;
+	color: var(--main-color);
+	border: 2px solid var(--main-color);
+	transition-property: color, border-color;
+}
+
+.btn.filled {
 	background-color: var(--main-color);
 	color: white;
-	padding: 0.5em 1em;
 	transition-property: background-color;
 }
 
@@ -36,17 +43,21 @@
 	transition-property: fill;
 }
 
-.btn.default,
+.btn,
 .btn.icon svg {
 	transition-duration: var(--transition-duration);
 	transition-timing-function: var(--transition-method);
 }
 
 @media (hover: hover) {
-	.btn:not(:disabled):not(.icon):hover {
+	.btn.default:not(:disabled):hover {
+		border-color: var(--color-light);
+		color: var(--color-light);
+	}
+	.btn.filled:not(:disabled):hover {
 		background-color: var(--color-light);
 	}
-	.btn:not(:disabled).icon:hover svg {
+	.btn.icon:not(:disabled):hover svg {
 		fill: var(--color-light);
 	}
 }
