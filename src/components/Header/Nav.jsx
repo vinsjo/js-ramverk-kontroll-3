@@ -1,29 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import { useCart } from '../../recoil/cart';
-import './Nav.css';
+import NavLink from './NavLink';
+import styles from './Nav.module.css';
 
 const Nav = () => {
 	const cart = useCart();
 	return (
 		<nav>
-			<ul className="nav-links">
+			<ul className={styles.links}>
 				<li>
-					<NavLink
-						to="/products"
-						title="Product Overview"
-						className="nav-link"
-					>
+					<NavLink to="/products" title="Product Overview">
 						Products
 					</NavLink>
 				</li>
 				<li>
-					<NavLink
-						to="/cart"
-						title="Shopping Cart"
-						className="nav-link"
-					>
-						Cart ({cart.count || 0})
+					<NavLink to="/cart" title="Shopping Cart">
+						Cart ({cart.count})
 					</NavLink>
 				</li>
 			</ul>

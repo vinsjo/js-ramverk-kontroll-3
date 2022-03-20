@@ -1,7 +1,7 @@
 import React from 'react';
 import { isFn } from 'x-is-type';
 import { classNames } from '../utils';
-import './Button.css';
+import styles from './Button.module.css';
 const Button = ({
 	className,
 	children,
@@ -13,13 +13,13 @@ const Button = ({
 }) => {
 	return (
 		<button
-			className={classNames('btn', className, variant)}
+			className={classNames(styles.btn, styles[variant], className)}
 			type={type}
 			value={value || null}
 			onClick={e => isFn(onClick) && onClick(e)}
 			disabled={disabled}
 		>
-			{children}
+			{children || 'Click me'}
 		</button>
 	);
 };

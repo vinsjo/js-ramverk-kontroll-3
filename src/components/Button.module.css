@@ -1,0 +1,52 @@
+:root {
+	--transition-duration: 0.1s;
+	--transition-method: ease;
+}
+
+.btn {
+	font-family: inherit;
+	border: none;
+	border-radius: 3px;
+	font-weight: 500;
+}
+
+.btn:not(:disabled) {
+	cursor: pointer;
+}
+
+.btn.default {
+	background-color: var(--main-color);
+	color: white;
+	padding: 0.5em 1em;
+	transition-property: background-color;
+}
+
+.btn.icon {
+	padding: 0;
+	color: inherit;
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.btn.icon svg {
+	fill: var(--main-color);
+	transition-property: fill;
+}
+
+.btn.default,
+.btn.icon svg {
+	transition-duration: var(--transition-duration);
+	transition-timing-function: var(--transition-method);
+}
+
+@media (hover: hover) {
+	.btn:not(:disabled):not(.icon):hover {
+		background-color: var(--color-light);
+	}
+	.btn:not(:disabled).icon:hover svg {
+		fill: var(--color-light);
+	}
+}

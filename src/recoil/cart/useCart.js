@@ -1,45 +1,43 @@
 import { useRecoilState } from 'recoil';
 import cartState from './atom';
+import { replaceItemAtIndex, removeItemAtIndex } from '../../utils';
 
 const createCartItem = product => ({ product, count: 1 });
 
 const useCart = () => {
 	const [cart, setCart] = useRecoilState(cartState);
-
-	const findCartItem = id => cart.find(({ product }) => product.id === id);
 	/**
 	 * @param {Object} product
-	 * @param {Number} incrementValue
+	 * @param {Number} count
 	 */
-	const updateItemCount = (id, incrementValue) => {
-		return cart
-			.map(item =>
-				item.product.id === id
-					? { ...item, count: item.count + incrementValue }
-					: item
-			)
-			.filter(item => item.count);
+	const setItemCount = (product, count) => {
+		const i = cart.findIndex(item => item.product.id === product.id);
+		if (i < 0) return;
+		if (count <= 0 || isNaN(count)) {
+			return setCart(removeItemAtIndex(cart, i));
+		}
+		setCart(replaceItemAtIndex(cart, i, { ...cart[i], count: count }));
 	};
-
-	const add = product => {
-		setCart(
-			!findCartItem(product.id)
-				? [...cart, createCartItem(product)]
-				: updateItemCount(product.id, 1)
-		);
+	/**
+	 * @param {Object} product
+	 */
+	const getItemCount = product => {
+		const item = cart.find(item => item.product.id === product.id);
+		return !item ? 0 : item.count;
 	};
-	const remove = ({ id }) => {
-		if (!findCartItem(id)) return;
-		setCart(updateItemCount(id, -1));
-	};
-
-	const clear = ({ id }) => {
-		setCart(cart.filter(({ product }) => product.id !== id));
+	/**
+	 * @param {Object} product
+	 */
+	const addItem = product => {
+		const count = getItemCount(product);
+		if (!count) return setCart([...cart, createCartItem(product)]);
+		setItemCount(product, count + 1);
 	};
 
 	return {
 		items: cart,
 		get count() {
+			const count = cart.reduce((total, item) => total + item.count, 0);
 			return cart.reduce((total, item) => total + item.count, 0);
 		},
 		get totalPrice() {
@@ -48,10 +46,11 @@ const useCart = () => {
 				0
 			);
 		},
-		add,
-		remove,
-		clear,
-		reset: () => setCart([]),
+		addItem,
+		setItemCount,
+		getItemCount,
+		getItemTotal: product => getItemCount(product) * product.price,
+		empty: () => setCart([]),
 	};
 };
 

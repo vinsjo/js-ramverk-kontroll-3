@@ -1,49 +1,37 @@
 import React from 'react';
-import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from 'react-icons/io';
 import { useCart } from '../recoil/cart';
+import { Link } from 'react-router-dom';
 import { formatPrice } from '../utils';
+import CartItem from './CartItem';
+import NumberInput from './NumberInput';
+import styles from './CartSummary.module.css';
 import Button from './Button';
-import './CartSummary.css';
 
 const CartSummary = () => {
 	const cart = useCart();
 	return (
-		<div className="cart-container">
-			<ul className="cart-items">
+		<div className={styles.container}>
+			<ul className={styles.items}>
 				{!cart.count
 					? 'Cart is empty'
 					: cart.items.map(({ product, count }) => (
-							<li key={product.id} className="cart-item">
-								<h3 className="title">{product.title}</h3>
-								<div className="item-bottom">
-									<span>
-										{count} * ${product.price}
-									</span>
-									<div className="button-container">
-										<Button
-											className="cart-btn"
-											variant="icon"
-											onClick={() => cart.remove(product)}
-										>
-											<IoMdRemoveCircleOutline />
-										</Button>
-										<Button
-											className="cart-btn"
-											variant="icon"
-											onClick={() => cart.add(product)}
-										>
-											<IoMdAddCircleOutline />
-										</Button>
-									</div>
-								</div>
-							</li>
+							<CartItem
+								key={product.id}
+								product={product}
+								count={count}
+								onCountChange={value =>
+									cart.setItemCount(product, value)
+								}
+								onDelete={() => cart.setItemCount(product, 0)}
+							/>
 					  ))}
 			</ul>
-			<div className="cart-bottom">
-				<div className="total-price">
-					<span>Total:</span>{' '}
-					<span>${formatPrice(cart.totalPrice)}</span>
-				</div>
+			<div className={styles.total}>
+				<span>Total:</span> <span>${formatPrice(cart.totalPrice)}</span>
+			</div>
+			<div className={styles.actions}>
+				<Button onClick={() => cart.empty()}>Empty Cart</Button>
+				<Button> Checkout</Button>
 			</div>
 		</div>
 	);

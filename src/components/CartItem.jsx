@@ -1,0 +1,37 @@
+import React from 'react';
+import { IoMdCloseCircleOutline } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+import { formatPrice } from '../utils';
+import Button from './Button';
+import NumberInput from './NumberInput';
+import styles from './CartItem.module.css';
+
+const CartItem = ({ product, count, onCountChange, onDelete }) => {
+	return (
+		<li className={styles.item}>
+			<Button className={styles.delete} onClick={onDelete} variant="icon">
+				<IoMdCloseCircleOutline />
+			</Button>
+			<div className={styles.info}>
+				<Link
+					to={`/product/${product.id}`}
+					title="Product Page"
+					className={styles.title}
+				>
+					{product.title}
+				</Link>
+				<p className={styles.price}>
+					${formatPrice(count * product.price)}
+				</p>
+			</div>
+			<NumberInput
+				className={styles.input}
+				initialValue={count}
+				min={0}
+				onChange={onCountChange}
+			/>
+		</li>
+	);
+};
+
+export default CartItem;

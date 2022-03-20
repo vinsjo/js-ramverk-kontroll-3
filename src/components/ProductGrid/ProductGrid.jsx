@@ -1,12 +1,19 @@
 import React from 'react';
+import products from '../../data/products.json';
+import { useCart } from '../../recoil/cart';
 import ProductGridItem from './ProductGridItem';
-import './ProductGrid.css';
+import styles from './ProductGrid.module.css';
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = () => {
+	const cart = useCart();
 	return (
-		<div className="product-grid">
+		<div className={styles.grid}>
 			{products.map(product => (
-				<ProductGridItem key={product.id} product={product} />
+				<ProductGridItem
+					key={product.id}
+					product={product}
+					onAdd={() => cart.addItem(product)}
+				/>
 			))}
 		</div>
 	);
