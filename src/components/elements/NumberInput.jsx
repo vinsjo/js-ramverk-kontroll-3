@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { IoMdAdd, IoMdRemove } from 'react-icons/io';
 import { isFn, isNum } from 'x-is-type';
-import { classNames } from '../utils';
+import { classNames } from '../../utils';
 import Button from './Button';
 import styles from './NumberInput.module.css';
 

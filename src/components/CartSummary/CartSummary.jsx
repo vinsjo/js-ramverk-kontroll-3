@@ -1,12 +1,23 @@
-import React from 'react';
-import { useCart } from '../recoil/cart';
-import { formatPrice } from '../utils';
+import React, { useState, useEffect } from 'react';
+import useCart from '../../hooks/useCart';
+import { classNames, formatPrice } from '../../utils';
+import { Button } from '../elements';
+import Popup from '../elements/Popup';
 import CartItem from './CartItem';
-import Button from './Button';
 import styles from './CartSummary.module.css';
 
 const CartSummary = () => {
 	const cart = useCart();
+
+	const [showPopup, setShowPopup] = useState(false);
+
+	useEffect(() => {
+		if (!showPopup) return;
+		const timeout = setTimeout(() => {
+			setShowPopup(false);
+		}, 2000);
+		return () => clearTimeout(timeout);
+	}, [showPopup, setShowPopup]);
 	return (
 		<div className={styles.container}>
 			<ul className={styles.items}>
@@ -44,8 +55,18 @@ const CartSummary = () => {
 				>
 					Empty Cart
 				</Button>
-				<Button disabled={!cart.count}> Checkout</Button>
+				<Button
+					disabled={!cart.count}
+					onClick={() => setShowPopup(true)}
+				>
+					Checkout
+				</Button>
 			</div>
+			<Popup show={showPopup} onClick={() => setShowPopup(false)}>
+				<h4 className={styles['popup-content']}>
+					Checkout is not available yet... 😥
+				</h4>
+			</Popup>
 		</div>
 	);
 };

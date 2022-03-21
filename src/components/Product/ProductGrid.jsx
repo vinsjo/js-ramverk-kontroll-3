@@ -1,6 +1,6 @@
 import React from 'react';
 import products from '../../data/products.json';
-import { useCart } from '../../recoil/cart';
+import useCart from '../../hooks/useCart';
 import ProductGridItem from './ProductGridItem';
 import styles from './ProductGrid.module.css';
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import { formatPrice } from '../utils';
-import Button from './Button';
-import NumberInput from './NumberInput';
+import { formatPrice } from '../../utils';
+import { Button, NumberInput } from '../elements';
 import styles from './CartItem.module.css';
 
 const CartItem = ({ product, count, onCountChange, onDelete }) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { classNames, formatPrice } from '../../utils';
-import Button from '../Button';
-import ProductImage from '../ProductImage';
+import { Button } from '../elements';
+import ProductImage from './ProductImage';
 import styles from './ProductGridItem.module.css';
 
 const ProductGridItem = ({ product, onAdd }) => {

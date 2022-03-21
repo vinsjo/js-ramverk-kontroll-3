@@ -1,7 +1,7 @@
 import React from 'react';
-import { formatPrice } from '../utils';
-import { useCart } from '../recoil/cart';
-import Button from './Button';
+import { formatPrice } from '../../utils';
+import useCart from '../../hooks/useCart';
+import { Button } from '../elements';
 import ProductImage from './ProductImage';
 import styles from './Product.module.css';
 

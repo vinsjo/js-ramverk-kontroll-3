@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useCart } from '../../recoil/cart';
-import NavLink from './NavLink';
+import useCart from '../../hooks/useCart';
+import { NavLink } from '../elements';
 import styles from './Nav.module.css';
 
 const Nav = () => {
